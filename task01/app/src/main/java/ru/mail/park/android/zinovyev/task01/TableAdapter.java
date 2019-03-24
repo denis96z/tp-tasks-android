@@ -13,16 +13,11 @@ import androidx.annotation.Nullable;
 
 public class TableAdapter extends ArrayAdapter<Integer> {
 
-    private static final ArrayList<Integer> numbers = new ArrayList<>();
-    private Context context;
+    private Context mContext;
 
     TableAdapter(@NonNull Context context, int resource) {
-        super(context, resource, TableAdapter.numbers);
-        this.context = context;
-    }
-
-    public static void addNumber(Integer number) {
-        TableAdapter.numbers.add(number);
+        super(context, resource, new ArrayList<Integer>());
+        this.mContext = context;
     }
 
     @NonNull
@@ -31,11 +26,11 @@ public class TableAdapter extends ArrayAdapter<Integer> {
         TextView label = (TextView) convertView;
 
         if (convertView == null) {
-            convertView = new TextView(this.context);
+            convertView = new TextView(this.mContext);
             label = (TextView) convertView;
         }
 
-        label.setText(String.format("%s", TableAdapter.numbers.get(position)));
+        label.setText(String.format("%s", this.getItem(position)));
         return (convertView);
     }
 }

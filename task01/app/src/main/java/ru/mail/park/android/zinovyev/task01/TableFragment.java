@@ -56,7 +56,7 @@ public class TableFragment extends Fragment {
 
     private void addInitNumbers() {
         for (int i = 0; i < TableFragment.INIT_N; ++i) {
-            TableAdapter.addNumber(i);
+            this.tableAdapter.add(i);
         }
     }
 
