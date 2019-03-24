@@ -1,25 +1,23 @@
 package ru.mail.park.android.zinovyev.task01;
 
-import android.app.Activity;
+import android.net.Uri;
 import android.os.Bundle;
-import android.widget.GridView;
 
 import androidx.annotation.Nullable;
 
-public class TableActivity extends Activity {
-
-    private GridView tableView;
-    private TableAdapter tableAdapter;
+public class TableActivity extends BaseActivity
+        implements TableFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table);
 
-        this.tableAdapter = new TableAdapter(getApplicationContext(),
-                android.R.layout.simple_list_item_1);
+        this.addFragment(R.id.fragment_layout, new TableFragment(), "tableFragment");
+    }
 
-        this.tableView = findViewById(R.id.tableView);
-        this.tableView.setAdapter(this.tableAdapter);
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+        System.out.println("onFragmentInteraction");
     }
 }
