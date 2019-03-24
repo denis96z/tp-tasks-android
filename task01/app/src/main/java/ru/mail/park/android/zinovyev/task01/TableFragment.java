@@ -29,7 +29,7 @@ public class TableFragment extends Fragment {
         this.mTableAdapter = new TableAdapter(view.getContext(),
                 android.R.layout.simple_list_item_1);
 
-        this.mTableView = view.findViewById(R.id.tableView);
+        this.mTableView = view.findViewById(R.id.table_view);
         this.mTableView.setAdapter(this.mTableAdapter);
 
         this.addInitNumbers();

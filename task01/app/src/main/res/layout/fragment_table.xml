@@ -6,14 +6,11 @@
     tools:context=".TableFragment">
 
     <GridView
-        android:id="@+id/tableView"
+        android:id="@+id/table_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnWidth="100dp"
         android:gravity="center"
-        android:horizontalSpacing="5dp"
-        android:numColumns="auto_fit"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="35dp" />
+        android:verticalSpacing="32dp"
+        android:stretchMode="columnWidth" />
 
 </FrameLayout>
