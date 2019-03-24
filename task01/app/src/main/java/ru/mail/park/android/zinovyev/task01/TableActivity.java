@@ -4,16 +4,24 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 public class TableActivity extends BaseActivity
         implements TableFragment.OnFragmentInteractionListener {
+
+    Fragment tableFragment = new TableFragment();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table);
 
-        this.addFragment(R.id.fragment_layout, new TableFragment(), "tableFragment");
+        FragmentManager fm = this.getSupportFragmentManager();
+//        if (fm.findFragmentById(R.id.fragment_layout) == null) {
+            fm.beginTransaction().add(R.id.fragment_layout,
+                    this.tableFragment).addToBackStack(null).commit();
+//        }
     }
 
     @Override
