@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 
 public class TableFragment extends Fragment {
 
+    private static final String LIST_CREATED_FLAG = "listCreated";
+
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 100;
 
@@ -32,7 +34,11 @@ public class TableFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_table, container, false);
 
-        this.mTableAdapter = new TableAdapter(view.getContext(), android.R.layout.simple_list_item_1);
+        if (savedInstanceState == null ||
+                !savedInstanceState.getBoolean(TableFragment.LIST_CREATED_FLAG)) {
+            this.mTableAdapter = new TableAdapter(view.getContext(),
+                    android.R.layout.simple_list_item_1);
+        }
 
         Button addNumberBtn = view.findViewById(R.id.add_number_button);
         addNumberBtn.setOnClickListener(v -> this.mTableAdapter.add(++this.mNextNumber));
@@ -73,6 +79,12 @@ public class TableFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putBoolean(TableFragment.LIST_CREATED_FLAG, true);
+        super.onSaveInstanceState(outState);
     }
 
     private void addInitNumbers() {
