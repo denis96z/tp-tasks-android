@@ -1,11 +1,10 @@
 package ru.mail.park.android.zinovyev.task01;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,6 +13,6 @@ public class MainActivity extends Activity {
     }
 
     public void onBtnClick(View view) {
-        startActivity(new Intent(this, TableActivity.class));
+        this.startActivity(new Intent(this, TableActivity.class));
     }
 }
