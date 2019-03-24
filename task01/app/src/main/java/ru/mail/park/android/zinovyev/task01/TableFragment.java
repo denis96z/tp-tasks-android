@@ -23,11 +23,9 @@ public class TableFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_table,
-                container, false);
+        View view = inflater.inflate(R.layout.fragment_table, container, false);
 
-        this.mTableAdapter = new TableAdapter(view.getContext(),
-                android.R.layout.simple_list_item_1);
+        this.mTableAdapter = new TableAdapter(view.getContext(), android.R.layout.simple_list_item_1);
 
         this.mTableView = view.findViewById(R.id.table_view);
         this.mTableView.setAdapter(this.mTableAdapter);
