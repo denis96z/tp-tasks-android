@@ -34,16 +34,9 @@ public class TableFragment extends Fragment {
         this.mTableView = view.findViewById(R.id.table_view);
         this.mTableView.setAdapter(this.mTableAdapter);
 
-        this.mTableView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (mListener != null) {
-                    mListener.onNumberSelected(mTableAdapter.getItem(position));
-                }
+        this.mTableView.setOnItemClickListener((parent, v, position, id) -> {
+            if (mListener != null) {
+                mListener.onNumberSelected(mTableAdapter.getItem(position));
             }
         });
 

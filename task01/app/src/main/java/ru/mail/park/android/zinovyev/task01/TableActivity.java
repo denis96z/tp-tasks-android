@@ -4,25 +4,46 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
-public class TableActivity extends BaseActivity
-        implements TableFragment.OnFragmentInteractionListener {
+public class TableActivity extends BaseActivity implements
+        TableFragment.OnFragmentInteractionListener,
+        NumberFragment.OnFragmentInteractionListener {
 
-    Fragment tableFragment = new TableFragment();
+    TableFragment mTableFragment = new TableFragment();
+    NumberFragment mNumberFragment = new NumberFragment();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table);
 
-        FragmentManager fm = this.getSupportFragmentManager();
-        fm.beginTransaction().replace(R.id.fragment_layout,
-                this.tableFragment).addToBackStack(null).commit();
+        this.showTableFragment();
     }
 
     @Override
     public void onNumberSelected(Integer number) {
-        System.out.println("onNumberSelected");
+        this.showNumberFragment(number);
+    }
+
+    @Override
+    public void onReturnButtonClicked() {
+        this.showTableFragment();
+    }
+
+    private void showTableFragment() {
+        this.showFragment(this.mTableFragment);
+    }
+
+    private void showNumberFragment(Integer number) {
+        this.mNumberFragment.setNumber(number);
+        this.showFragment(this.mNumberFragment);
+    }
+
+    private void showFragment(Fragment fragment) {
+        this.getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_layout, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 }

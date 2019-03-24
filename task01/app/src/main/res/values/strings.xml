@@ -5,4 +5,9 @@
     <string name="main_activity_btn_text">BUTTON</string>
 
     <string name="table_activity_text">This is the table activity!</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="selected_number_text">NUMBER</string>
+    <string name="back_button_text">BACK</string>
 </resources>

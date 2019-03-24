@@ -12,7 +12,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void onBtnClick(View view) {
+    public void onButtonClick(View view) {
         this.startActivity(new Intent(this, TableActivity.class));
     }
 }
