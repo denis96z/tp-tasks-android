@@ -1,7 +1,6 @@
 package ru.mail.park.android.zinovyev.task01;
 
 import android.content.res.Configuration;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,6 +60,6 @@ public class TableFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
+        void onNumberSelected(Integer number);
     }
 }

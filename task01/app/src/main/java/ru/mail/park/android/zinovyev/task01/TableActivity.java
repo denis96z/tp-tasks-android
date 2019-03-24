@@ -1,6 +1,5 @@
 package ru.mail.park.android.zinovyev.task01;
 
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -23,7 +22,7 @@ public class TableActivity extends BaseActivity
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
-        System.out.println("onFragmentInteraction");
+    public void onNumberSelected(Integer number) {
+        System.out.println("onNumberSelected");
     }
 }
