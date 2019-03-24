@@ -13,14 +13,12 @@ import androidx.fragment.app.Fragment;
 
 public class TableFragment extends Fragment {
 
-    private GridView mTableView;
-    private TableAdapter mTableAdapter;
-
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 100;
-
     private static final int PORTRAIT_NUM_COLUMNS = 3;
     private static final int LANDSCAPE_NUM_COLUMNS = 4;
+    private GridView mTableView;
+    private TableAdapter mTableAdapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -46,10 +44,6 @@ public class TableFragment extends Fragment {
         this.changeNumColumns(newConfig.orientation);
     }
 
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
-    }
-
     private void addInitNumbers() {
         for (int i = TableFragment.MIN_NUMBER; i <= TableFragment.MAX_NUMBER; ++i) {
             this.mTableAdapter.add(i);
@@ -66,5 +60,9 @@ public class TableFragment extends Fragment {
                 this.mTableView.setNumColumns(TableFragment.LANDSCAPE_NUM_COLUMNS);
                 break;
         }
+    }
+
+    public interface OnFragmentInteractionListener {
+        void onFragmentInteraction(Uri uri);
     }
 }

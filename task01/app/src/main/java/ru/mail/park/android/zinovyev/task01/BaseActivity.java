@@ -1,6 +1,7 @@
 package ru.mail.park.android.zinovyev.task01;
 
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public abstract class BaseActivity extends AppCompatActivity {
