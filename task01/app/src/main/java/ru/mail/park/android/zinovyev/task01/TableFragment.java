@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.GridView;
 
 import androidx.annotation.NonNull;
@@ -15,8 +16,11 @@ public class TableFragment extends Fragment {
 
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 100;
+
     private static final int PORTRAIT_NUM_COLUMNS = 3;
     private static final int LANDSCAPE_NUM_COLUMNS = 4;
+
+    private Integer mNextNumber = MAX_NUMBER;
 
     private GridView mTableView;
     private TableAdapter mTableAdapter;
@@ -29,6 +33,9 @@ public class TableFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_table, container, false);
 
         this.mTableAdapter = new TableAdapter(view.getContext(), android.R.layout.simple_list_item_1);
+
+        Button addNumberBtn = view.findViewById(R.id.add_number_button);
+        addNumberBtn.setOnClickListener(v -> this.mTableAdapter.add(++this.mNextNumber));
 
         this.mTableView = view.findViewById(R.id.table_view);
         this.mTableView.setAdapter(this.mTableAdapter);
