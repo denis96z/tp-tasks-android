@@ -7,20 +7,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 public class TableFragment extends Fragment {
 
-    private GridView tableView;
-    private TableAdapter tableAdapter;
+    private GridView mTableView;
+    private TableAdapter mTableAdapter;
 
-    private static final int INIT_N = 10;
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 100;
 
-    private static final int PORTRAIT_NUM_COLUMNS = 2;
-    private static final int LANDSCAPE_NUM_COLUMNS = 3;
+    private static final int PORTRAIT_NUM_COLUMNS = 3;
+    private static final int LANDSCAPE_NUM_COLUMNS = 4;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -28,18 +28,14 @@ public class TableFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_table,
                 container, false);
 
-        if (savedInstanceState == null) {
-            Toast.makeText(this.getContext(), "onCreateView()", Toast.LENGTH_SHORT).show();
+        this.mTableAdapter = new TableAdapter(view.getContext(),
+                android.R.layout.simple_list_item_1);
 
-            this.tableAdapter = new TableAdapter(view.getContext(),
-                    android.R.layout.simple_list_item_1);
+        this.mTableView = view.findViewById(R.id.tableView);
+        this.mTableView.setAdapter(this.mTableAdapter);
 
-            this.tableView = view.findViewById(R.id.tableView);
-            this.tableView.setAdapter(this.tableAdapter);
-
-            this.addInitNumbers();
-            this.changeNumColumns(getResources().getConfiguration().orientation);
-        }
+        this.addInitNumbers();
+        this.changeNumColumns(getResources().getConfiguration().orientation);
 
         return view;
     }
@@ -55,19 +51,19 @@ public class TableFragment extends Fragment {
     }
 
     private void addInitNumbers() {
-        for (int i = 0; i < TableFragment.INIT_N; ++i) {
-            this.tableAdapter.add(i);
+        for (int i = TableFragment.MIN_NUMBER; i <= TableFragment.MAX_NUMBER; ++i) {
+            this.mTableAdapter.add(i);
         }
     }
 
     private void changeNumColumns(int orientation) {
         switch (orientation) {
             case Configuration.ORIENTATION_PORTRAIT:
-                this.tableView.setNumColumns(TableFragment.PORTRAIT_NUM_COLUMNS);
+                this.mTableView.setNumColumns(TableFragment.PORTRAIT_NUM_COLUMNS);
                 break;
 
             case Configuration.ORIENTATION_LANDSCAPE:
-                this.tableView.setNumColumns(TableFragment.LANDSCAPE_NUM_COLUMNS);
+                this.mTableView.setNumColumns(TableFragment.LANDSCAPE_NUM_COLUMNS);
                 break;
         }
     }

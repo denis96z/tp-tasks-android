@@ -18,7 +18,7 @@ public class TableActivity extends BaseActivity
         setContentView(R.layout.activity_table);
 
         FragmentManager fm = this.getSupportFragmentManager();
-        fm.beginTransaction().add(R.id.fragment_layout,
+        fm.beginTransaction().replace(R.id.fragment_layout,
                 this.tableFragment).addToBackStack(null).commit();
     }
 

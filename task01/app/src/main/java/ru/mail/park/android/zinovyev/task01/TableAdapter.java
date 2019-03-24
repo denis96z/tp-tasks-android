@@ -1,6 +1,7 @@
 package ru.mail.park.android.zinovyev.task01;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -30,7 +31,12 @@ public class TableAdapter extends ArrayAdapter<Integer> {
             label = (TextView) convertView;
         }
 
-        label.setText(String.format("%s", this.getItem(position)));
+        Integer x = this.getItem(position);
+        if (x != null) {
+            label.setText(String.format("%s", x));
+            label.setTextColor(x % 2 == 0 ? Color.RED : Color.BLUE);
+        }
+
         return (convertView);
     }
 }
