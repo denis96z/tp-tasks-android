@@ -3,4 +3,7 @@
     <string name="text">Your number (0 .. 9):</string>
     <string name="button_text">send</string>
     <string name="new_game">New game</string>
+    <string name="correct_number_message">Correct number!</string>
+    <string name="wrong_number_message">Wrong number!</string>
+    <string name="no_number_message">Number expected!</string>
 </resources>

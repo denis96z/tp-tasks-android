@@ -63,12 +63,12 @@ class MainActivity : AppCompatActivity() {
             val n = mNumberField.text.toString().toUInt()
             if (n == mNumber) {
                 mGameOver = true
-                showMessage("Congratulations! You won!")
+                showMessage(resources.getString(R.string.correct_number_message))
             } else {
-                showMessage("Try one more time!")
+                showMessage(resources.getString(R.string.wrong_number_message))
             }
         } catch (exception: NumberFormatException) {
-            showMessage("Number expected!")
+            showMessage(resources.getString(R.string.no_number_message))
         }
     }
 
