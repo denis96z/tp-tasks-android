@@ -28,13 +28,13 @@ public class NumberFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_number,
                 container, false);
 
-        this.mNumberView = view.findViewById(R.id.number_text_view);
-        this.mNumberView.setText(String.format("%s", this.mNumber.toString()));
-        this.mNumberView.setTextColor(this.mNumber % 2 == 0 ? Color.RED : Color.BLUE);
+        mNumberView = view.findViewById(R.id.number_text_view);
+        mNumberView.setText(String.format("%s", mNumber.toString()));
+        mNumberView.setTextColor(mNumber % 2 == 0 ? Color.RED : Color.BLUE);
 
-        this.mBackButton = view.findViewById(R.id.back_button);
-        this.mBackButton.setOnClickListener(v -> {
-            if (this.mListener != null) {
+        mBackButton = view.findViewById(R.id.back_button);
+        mBackButton.setOnClickListener(v -> {
+            if (mListener != null) {
                 mListener.onReturnButtonClicked();
             }
         });
@@ -60,7 +60,7 @@ public class NumberFragment extends Fragment {
     }
 
     void setNumber(Integer number) {
-        this.mNumber = number;
+        mNumber = number;
     }
 
     public interface OnFragmentInteractionListener {

@@ -15,6 +15,6 @@ public class MainActivity extends BaseActivity {
     public void onButtonClick(View view) {
         Intent intent = new Intent(this, TableActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        this.startActivity(intent);
+        startActivity(intent);
     }
 }

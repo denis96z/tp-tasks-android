@@ -10,6 +10,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         StackTraceElement st = Thread.currentThread().getStackTrace()[3];
         message = st.getClassName() + "::" + st.getMethodName() + " -> " + message;
 
-        Toast.makeText(this.getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 }

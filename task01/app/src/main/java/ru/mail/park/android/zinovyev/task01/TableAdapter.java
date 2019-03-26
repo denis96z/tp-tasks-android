@@ -18,7 +18,7 @@ public class TableAdapter extends ArrayAdapter<Integer> {
 
     TableAdapter(@NonNull Context context, int resource) {
         super(context, resource, new ArrayList<Integer>());
-        this.mContext = context;
+        mContext = context;
     }
 
     @NonNull
@@ -27,11 +27,11 @@ public class TableAdapter extends ArrayAdapter<Integer> {
         TextView label = (TextView) convertView;
 
         if (convertView == null) {
-            convertView = new TextView(this.mContext);
+            convertView = new TextView(mContext);
             label = (TextView) convertView;
         }
 
-        Integer x = this.getItem(position);
+        Integer x = getItem(position);
         if (x != null) {
             label.setText(String.format("%s", x));
             label.setTextColor(x % 2 == 0 ? Color.RED : Color.BLUE);

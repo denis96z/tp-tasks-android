@@ -17,30 +17,30 @@ public class TableActivity extends BaseActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table);
 
-        this.showTableFragment();
+        showTableFragment();
     }
 
     @Override
     public void onNumberSelected(Integer number) {
-        this.showNumberFragment(number);
+        showNumberFragment(number);
     }
 
     @Override
     public void onReturnButtonClicked() {
-        this.showTableFragment();
+        showTableFragment();
     }
 
     private void showTableFragment() {
-        this.showFragment(this.mTableFragment);
+        showFragment(mTableFragment);
     }
 
     private void showNumberFragment(Integer number) {
-        this.mNumberFragment.setNumber(number);
-        this.showFragment(this.mNumberFragment);
+        mNumberFragment.setNumber(number);
+        showFragment(mNumberFragment);
     }
 
     private void showFragment(Fragment fragment) {
-        this.getSupportFragmentManager()
+        getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_layout, fragment)
                 .addToBackStack(null)

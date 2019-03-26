@@ -35,7 +35,7 @@ public class TableFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_table, container, false);
 
         if (savedInstanceState == null) {
-            this.mTableAdapter = new TableAdapter(view.getContext(),
+            mTableAdapter = new TableAdapter(view.getContext(),
                     android.R.layout.simple_list_item_1);
         } else {
             int max = savedInstanceState.getInt(TableFragment.CURRENT_MAX_NUMBER_VAR);
@@ -45,19 +45,19 @@ public class TableFragment extends Fragment {
         }
 
         Button addNumberBtn = view.findViewById(R.id.add_number_button);
-        addNumberBtn.setOnClickListener(v -> this.mTableAdapter.add(++this.mMaxNumber));
+        addNumberBtn.setOnClickListener(v -> mTableAdapter.add(++mMaxNumber));
 
-        this.mTableView = view.findViewById(R.id.table_view);
-        this.mTableView.setAdapter(this.mTableAdapter);
+        mTableView = view.findViewById(R.id.table_view);
+        mTableView.setAdapter(mTableAdapter);
 
-        this.mTableView.setOnItemClickListener((parent, v, position, id) -> {
+        mTableView.setOnItemClickListener((parent, v, position, id) -> {
             if (mListener != null) {
                 mListener.onNumberSelected(mTableAdapter.getItem(position));
             }
         });
 
-        this.addInitNumbers();
-        this.changeNumColumns(getResources().getConfiguration().orientation);
+        addInitNumbers();
+        changeNumColumns(getResources().getConfiguration().orientation);
 
         return view;
     }
@@ -65,7 +65,7 @@ public class TableFragment extends Fragment {
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        this.changeNumColumns(newConfig.orientation);
+        changeNumColumns(newConfig.orientation);
     }
 
     @Override
@@ -94,18 +94,18 @@ public class TableFragment extends Fragment {
 
     private void addInitNumbers() {
         for (int i = TableFragment.DEFAULT_MIN_NUMBER; i <= mMaxNumber; ++i) {
-            this.mTableAdapter.add(i);
+            mTableAdapter.add(i);
         }
     }
 
     private void changeNumColumns(int orientation) {
         switch (orientation) {
             case Configuration.ORIENTATION_PORTRAIT:
-                this.mTableView.setNumColumns(TableFragment.PORTRAIT_NUM_COLUMNS);
+                mTableView.setNumColumns(TableFragment.PORTRAIT_NUM_COLUMNS);
                 break;
 
             case Configuration.ORIENTATION_LANDSCAPE:
-                this.mTableView.setNumColumns(TableFragment.LANDSCAPE_NUM_COLUMNS);
+                mTableView.setNumColumns(TableFragment.LANDSCAPE_NUM_COLUMNS);
                 break;
         }
     }
