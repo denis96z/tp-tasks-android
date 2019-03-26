@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">task02</string>
+    <string name="text">Your number (0 .. 9):</string>
+    <string name="button_text">send</string>
+    <string name="new_game">New game</string>
 </resources>
