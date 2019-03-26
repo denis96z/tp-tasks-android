@@ -10,9 +10,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class NumberFragment extends Fragment {
+
+    private static final String ARG_NUMBER = "number";
 
     private Integer mNumber = 0;
 
@@ -20,6 +23,22 @@ public class NumberFragment extends Fragment {
     private TextView mNumberView;
 
     private OnFragmentInteractionListener mListener;
+
+    public static NumberFragment newInstance(Integer number) {
+        NumberFragment fragment = new NumberFragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_NUMBER, number);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mNumber = getArguments().getInt(ARG_NUMBER);
+        }
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -57,10 +76,6 @@ public class NumberFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-    void setNumber(Integer number) {
-        mNumber = number;
     }
 
     public interface OnFragmentInteractionListener {

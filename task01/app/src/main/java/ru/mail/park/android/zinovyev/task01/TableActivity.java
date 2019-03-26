@@ -35,7 +35,7 @@ public class TableActivity extends BaseActivity implements
     }
 
     private void showNumberFragment(Integer number) {
-        mNumberFragment.setNumber(number);
+        mNumberFragment = NumberFragment.newInstance(number);
         showFragment(mNumberFragment);
     }
 
