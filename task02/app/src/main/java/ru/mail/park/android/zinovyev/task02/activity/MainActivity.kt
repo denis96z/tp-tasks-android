@@ -3,6 +3,7 @@ package ru.mail.park.android.zinovyev.task02.activity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import ru.mail.park.android.zinovyev.task02.R
 import kotlin.random.Random
 import kotlin.random.nextUInt
+
 
 @ExperimentalUnsignedTypes
 class MainActivity : AppCompatActivity() {
@@ -34,12 +36,22 @@ class MainActivity : AppCompatActivity() {
 
         mButton.setOnClickListener { onButtonClick() }
 
-        initNumber()
+        startNewGame()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return when (item?.itemId) {
+            R.id.new_game -> {
+                startNewGame()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun onButtonClick() {
@@ -64,8 +76,10 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
     }
 
-    private fun initNumber() {
+    private fun startNewGame() {
         mNumber = mRandom.nextUInt() % 10u
+        mGameOver = false
+
         Log.d(this.javaClass.simpleName, "Random number: $mNumber")
     }
 }
